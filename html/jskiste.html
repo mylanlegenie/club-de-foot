@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abonnements JS TOUHAR</title>
+
+    <link rel="icon" type="image/x-icon" href="/assets/logo.webp">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/jskiste.css">
+    <link rel="stylesheet" href="visite-stade.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+
+<body>
+
+    <nav id="navbar">
+        <div id="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <a href="/"><img id="logo" src="/assets/logo.webp" alt="Logo du club"></a>
+
+        <div id="rubriques-desktop">
+            <a class="rubriques" href="/html/jskiste">JSKISTE</a>
+            <a class="rubriques" href="/html/billeterie">BILLETERIE</a>
+            <a class="rubriques" href="/html/notre-histoire">NOTRE HISTOIRE</a>
+        </div>
+
+        <div id="navbar-icons">
+            <a href="/html/panier.html"><img src="/assets/basket.webp" alt="Panier"></a>
+            <a href="/html/seconnecter.html"><img src="/assets/avatar.webp" alt="Avatar"></a>
+        </div>
+    </nav>
+
+
+    <div id="menu-mobile" class="hidden">
+        <a class="rubriques" href="/html/jskiste">JSKISTE</a>
+        <a class="rubriques" href="/html/billeterie">BILLETERIE</a>
+        <a class="rubriques" href="/html/notre-histoire">NOTRE HISTOIRE</a>
+    </div>
+    <main>
+        <div id="div-title">
+            <h2>Abonnements JS TOUHAR</h2>
+            <hr>
+            <p>Choisissez votre abonnement et vivez la passion du football avec la JS Touhar</p>
+        </div>
+
+        <div id="cards">
+            <div class="standard-card">
+                <div class="standard-card_bg"></div>
+                <div class="standard-card_title">
+                    <h3>Abonnement Standard</h3>
+                </div>
+                <div class="standard-card_description">
+                    <p>Accès aux tribunes générales pour tous les matchs à domicile</p>
+                </div>
+                <div class="standard-card_price">
+                    <span>15 000 DA/an</span>
+                </div>
+                <button class="standard-card_button">S’abonner</button>
+            </div>
+
+            <div class="standard-card">
+                <div class="standard-card_bg"></div>
+                <div class="standard-card_title">
+                    <h3>Abonnement Premium</h3>
+                </div>
+                <div class="standard-card_description">
+                    <p>Places assises + goodies exclusifs + accès aux entraînements</p>
+                </div>
+                <div class="standard-card_price">
+                    <span>30 000 DA/an</span>
+                </div>
+                <button class="standard-card_button">S’abonner</button>
+            </div>
+
+            <div class="standard-card">
+                <div class="standard-card_bg"></div>
+                <div class="standard-card_title">
+                    <h3>Abonnement VIP</h3>
+                </div>
+                <div class="standard-card_description">
+                    <p>Accès loge VIP + repas + rencontre avec les joueurs</p>
+                </div>
+                <div class="standard-card_price">
+                    <span>50 000 DA/an</span>
+                </div>
+                <button class="standard-card_button">S’abonner</button>
+            </div>
+        </div>
+    </main>
+    <footer id="site-footer">
+        <p>&copy; 2025 JS TOUHAR — Réalisé par <strong>Mylan HACHEMANE</strong></p>
+    </footer>
+    <script>
+        const abonnements = [
+            {
+                id: "abonnement-standard",
+                type: "abonnement",
+                titre: "Abonnement Standard",
+                prix: "15000 DA",
+                image: "/assets/logo.webp",
+                description: "Accès tribunes générales",
+                quantity: 1
+            },
+            {
+                id: "abonnement-premium",
+                type: "abonnement",
+                titre: "Abonnement Premium",
+                prix: "30000 DA",
+                image: "/assets/logo.webp",
+                description: "Goodies + entraînements",
+                quantity: 1
+            },
+            {
+                id: "abonnement-vip",
+                type: "abonnement",
+                titre: "Abonnement VIP",
+                prix: "50000 DA",
+                image: "/assets/logo.webp",
+                description: "Loge VIP + repas + joueurs",
+                quantity: 1
+            }
+        ];
+
+        function loadCart() {
+            return JSON.parse(localStorage.getItem("panier") || "[]");
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem("panier", JSON.stringify(cart));
+        }
+
+        const buttons = document.querySelectorAll(".standard-card_button");
+
+        buttons.forEach((button, index) => {
+            button.addEventListener("click", () => {
+                const cart = loadCart();
+
+                const cartSansAbonnement = cart.filter(item => item.type !== "abonnement");
+
+                cartSansAbonnement.push(abonnements[index]);
+
+                saveCart(cartSansAbonnement);
+
+                alert(`✅ ${abonnements[index].titre} ajouté au panier !`);
+                window.location.href = "/html/panier.html";
+            });
+        });
+        // burger
+        const burger = document.getElementById("burger-menu");
+        const mobileMenu = document.getElementById("menu-mobile");
+
+        burger.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+
+</body>
+
+</html>

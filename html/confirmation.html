@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation de commande</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/confirmation.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Attention au hameçonnage !</h1>
+        <h2>Certains boutons peuvent cacher des liens douteux</h2>
+        <h2>Il fallait écouter Monsieur Touhar</h2>
+        <h2>Mais tu peux te rattraper en résolvant ce problème :</h2>
+
+        <div class="probleme">
+            Soit la fonction <strong>f(x) = x² - 4x + 4</strong>.<br><br>
+
+            1. <strong>Factorise</strong> l'expression de <em>f(x)</em>.<br>
+            2. <strong>Détermine le minimum</strong> de cette fonction sur <em>ℝ</em>.<br>
+            3. Calcule <em>f(2)</em> puis <em>f(1)</em>.<br>
+            4. On pose <em>C = f(2) + f(1)</em>. Calcule sa valeur.<br>
+            5. Calcule <em>D = (C - 4) / 2</em>.<br>
+            6. <strong>Question finale</strong> : Le nombre <em>D</em> est-il une image par la fonction <em>f</em> ?
+            <br><em>Autrement dit, existe-t-il un réel x tel que f(x) = D ?</em> 🤔
+        </div>
+
+        <div class="interaction">
+            <label for="reponse">Votre réponse :</label>
+            <input type="text" id="reponse" placeholder="Entrez un nombre...">
+            <br>
+            <button id="valider">Valider</button>
+            <p id="message-erreur"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('valider').addEventListener('click', () => {
+            const reponse = document.getElementById('reponse').value.trim().toLowerCase();
+            const message = document.getElementById('message-erreur');
+
+            if (reponse === "non") {
+                history.back();
+            } else {
+                message.textContent = "Mauvaise réponse... essaye encore !";
+            }
+        });
+    </script>
+
+</body>
+
+</html>

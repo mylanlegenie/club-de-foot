@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/logo.webp">
+    <link rel="stylesheet" href="/css/book.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <title>Places</title>
+</head>
+
+<body>
+    <nav id="navbar">
+        <div id="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <a href="/"><img id="logo" src="/assets/logo.webp" alt="Logo du club"></a>
+
+        <div id="rubriques-desktop">
+            <a class="rubriques" href="/html/jskiste">JSKISTE</a>
+            <a class="rubriques" href="/html/billeterie">BILLETERIE</a>
+            <a class="rubriques" href="/html/notre-histoire">NOTRE HISTOIRE</a>
+        </div>
+
+        <div id="navbar-icons">
+            <a href="/html/panier.html"><img src="/assets/basket.webp" alt="Panier"></a>
+            <a href="/html/seconnecter.html"><img src="/assets/avatar.webp" alt="Avatar"></a>
+        </div>
+    </nav>
+
+
+    <div id="menu-mobile" class="hidden">
+        <a class="rubriques" href="/html/jskiste">JSKISTE</a>
+        <a class="rubriques" href="/html/billeterie">BILLETERIE</a>
+        <a class="rubriques" href="/html/notre-histoire">NOTRE HISTOIRE</a>
+    </div>
+    <section class="ticket-section">
+        <div class="ticket-header">
+            <span>4 annonces</span>
+            <select>
+                <option>Trier par prix</option>
+            </select>
+        </div>
+
+        <div id="ticket-container">
+
+        </div>
+    </section>
+    <footer id="site-footer">
+        <p>&copy; 2025 JS TOUHAR — Réalisé par <strong>Mylan HACHEMANE</strong></p>
+    </footer>
+    <script>
+        const offres = [
+            {
+                id: 1,
+                image: "/assets/stade.jpg",
+                section: "Section B2 - Catégorie Standard",
+                rang: "Rang 3",
+                billets: "Billets 4 côte à côte",
+                prix: "500 DA",
+                stock: 20
+            },
+            {
+                id: 2,
+                image: "/assets/stade.jpg",
+                section: "Section B2 - Catégorie Premium",
+                rang: "Rang 2",
+                billets: "Billets 3 côte à côte",
+                prix: "1 500 DA",
+                stock: 8
+            },
+            {
+                id: 3,
+                image: "/assets/stade.jpg",
+                section: "Section B2 - Catégorie Ultime",
+                rang: "Rang 1",
+                billets: "Billets 6 côte à côte",
+                prix: "15 500 DA",
+                stock: 20
+            }
+        ];
+
+        const container = document.getElementById("ticket-container");
+
+        function saveCart(cart) {
+            localStorage.setItem('panier', JSON.stringify(cart));
+        }
+
+        function loadCart() {
+            return JSON.parse(localStorage.getItem('panier') || '[]');
+        }
+
+        const cart = loadCart();
+
+        offres.forEach((offre, index) => {
+            const card = document.createElement("div");
+            card.className = "ticket-card";
+
+            card.innerHTML = `
+            <img src="${offre.image}" alt="Stade">
+            <div class="ticket-details">
+                <div class="desc">
+                    <strong>${offre.section}</strong><br>
+                    <span>${offre.rang}</span> – <span>${offre.billets}</span>
+                </div>
+                <div class="price">${offre.prix} <span>chaque</span></div>
+                <div class="stock ${offre.stock <= 10 ? 'red' : ''}" id="stock-${index}">
+                    ${offre.stock} billet(s) restant(s)
+                </div>
+                <a href="#" class="btn-select" data-index="${index}">Sélectionner</a>
+            </div>
+        `;
+
+            container.appendChild(card);
+        });
+
+        document.querySelectorAll(".btn-select").forEach(button => {
+            button.addEventListener("click", e => {
+                e.preventDefault();
+                const index = parseInt(button.dataset.index);
+                const offre = offres[index];
+
+                if (offre.stock > 0) {
+                    offre.stock--;
+
+                    const existingItem = cart.find(item => item.id === offre.id);
+                    if (existingItem) {
+                        existingItem.quantity++;
+                    } else {
+                        cart.push({ ...offre, quantity: 1 });
+                    }
+
+                    document.getElementById(`stock-${index}`).textContent = `${offre.stock} billet(s) restant(s)`;
+                    saveCart(cart);
+                } else {
+                    alert("Stock épuisé !");
+                }
+            });
+        });
+        // burger
+        const burger = document.getElementById("burger-menu");
+        const mobileMenu = document.getElementById("menu-mobile");
+
+        burger.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+
+
+</body>
+
+</html>

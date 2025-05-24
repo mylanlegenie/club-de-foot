@@ -1,0 +1,89 @@
+body {
+    font-family: 'Quicksand', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    padding: 30px;
+    margin: 0;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+h1 {
+    text-align: center;
+    color: #d32f2f;
+    font-size: 2.4em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    text-align: center;
+    color: #37474f;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.probleme {
+    background-color: #fffbe6;
+    border-left: 6px solid #fbc02d;
+    padding: 25px 30px;
+    border-radius: 12px;
+    font-size: 1.1em;
+    margin-top: 20px;
+    line-height: 1.7;
+}
+
+.interaction {
+    margin-top: 35px;
+    text-align: center;
+}
+
+.interaction label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+#reponse {
+    padding: 12px;
+    border: 2px solid #cfd8dc;
+    border-radius: 8px;
+    font-size: 1.1em;
+    width: 220px;
+    transition: border-color 0.2s ease;
+}
+
+#reponse:focus {
+    outline: none;
+    border-color: #4caf50;
+}
+
+#valider {
+    margin-top: 15px;
+    padding: 12px 30px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+#valider:hover {
+    background-color: #43a047;
+}
+
+#message-erreur {
+    margin-top: 15px;
+    font-size: 1em;
+    color: #c62828;
+}

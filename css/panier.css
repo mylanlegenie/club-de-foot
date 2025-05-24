@@ -1,0 +1,130 @@
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #06542b;
+    margin-bottom: 30px;
+    font-size: 2em;
+}
+
+.panier-bloc {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.panier-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+.panier-item img {
+    border-radius: 8px;
+    width: 130px;
+    height: auto;
+    object-fit: cover;
+}
+
+.panier-item div {
+    flex: 1;
+    font-size: 1rem;
+    color: #333;
+}
+
+.total {
+    text-align: right;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 30px;
+    color: #06542b;
+}
+
+.empty-message {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+    font-size: 1.1em;
+}
+
+#panier-options {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+#panier-options button {
+    padding: 10px 20px;
+    background-color: #06542b;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#panier-options button:hover {
+    background-color: #0a6d38;
+}
+
+.btn-supprimer {
+    background-color: #c62828;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+    height: fit-content;
+}
+
+.btn-supprimer:hover {
+    background-color: #a31919;
+}
+
+@media screen and (max-width: 950px) {
+    main {
+        margin: 20px 10px;
+        padding: 15px;
+    }
+
+    .panier-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .panier-item img {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        align-self: center;
+    }
+
+    #panier-options {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    #panier-options button {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .total {
+        text-align: center;
+    }
+}

@@ -1,0 +1,333 @@
+#section-billeterie {
+    background-image: url('/assets/stade2.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    background-blend-mode: darken;
+    display: flex;
+    flex-direction: column;
+    line-height: 3;
+    animation: fadeIn 1s ease-in;
+}
+
+#section-billeterie h1 {
+    color: white;
+    font-weight: 500;
+    text-align: center;
+    font-size: 58px;
+    margin-top: 20vh;
+    letter-spacing: 2px;
+}
+
+#timer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+#timer div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px;
+    color: white;
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+    transition: transform 0.3s;
+}
+
+#timer div:hover {
+    transform: scale(1.05);
+}
+
+#timer div:not(:last-child) {
+    border-right: 1px solid white;
+}
+
+.number {
+    color: #e0b000;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+
+#section-club {
+    position: relative;
+    color: white;
+    padding-top: 20px;
+    margin-bottom: 100px;
+}
+
+#section-club img {
+    height: 12vh;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+#section-club img:hover {
+    transform: scale(1.08);
+}
+
+#section-club>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 70px;
+    flex-wrap: wrap;
+}
+
+#opposite-club,
+#our-club,
+#details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+    font-family: 'Poppins', sans-serif;
+}
+
+#details {
+    line-height: 2;
+}
+
+#buy {
+    border: none;
+    padding: 18px 28px;
+    background: #f8c21f;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 30px;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+#buy:hover {
+    background-color: #ddb000;
+    transform: translateY(-2px);
+}
+
+.match-list-section {
+    padding: 40px 20px;
+    max-width: 85vw;
+    position: relative;
+    top: -30vh;
+    margin: auto;
+
+    animation: slideFadeIn 0.8s ease forwards;
+}
+
+.section-title {
+    text-align: center;
+    margin-left: 4.5vw;
+    color: #157347;
+    font-weight: 600;
+    margin-bottom: 35px;
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 1.2px;
+}
+
+.match-card {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    animation: fadeInUp 0.5s ease both;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.match-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: #222;
+    font-size: 15px;
+    max-width: 8vw;
+}
+
+.teams {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    color: #333;
+}
+
+.teams span {
+    display: inline-block;
+    max-width: 40%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.teams .vs {
+    color: #f0b000;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.price {
+    color: #157347;
+    font-size: 14px;
+}
+
+.price strong {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.match-date {
+    gap: 4px;
+    min-width: 80px;
+    text-align: right;
+    color: #157347;
+    font-weight: 400;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+
+}
+
+.btn-reserve a {
+    display: inline-block;
+    background-color: #ffd700;
+    color: #06542b;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn-reserve a:hover {
+    background-color: #ffe135;
+    transform: scale(1.05);
+}
+
+@keyframes slideFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #section-billeterie h1 {
+        font-size: 36px;
+        margin-top: 10vh;
+    }
+
+    #timer {
+        flex-direction: column;
+        gap: 20px;
+
+    }
+
+    #timer div:not(:last-child) {
+        border-right: none;
+    }
+
+
+    #section-club {
+        top: 0;
+        padding: 20px 10px;
+        margin-bottom: 40px;
+    }
+
+    #section-club>div {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    #section-club img {
+        height: 10vh;
+    }
+
+    #buy {
+        width: 90%;
+        text-align: center;
+        font-size: 16px;
+        padding: 14px;
+    }
+
+    .match-list-section {
+        top: 0;
+        padding: 20px 10px;
+    }
+
+    .match-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .match-info {
+        max-width: 100%;
+        font-size: 14px;
+    }
+
+    .teams {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .teams span {
+        max-width: none;
+        white-space: normal;
+    }
+
+    .match-date {
+        align-items: center;
+        font-size: 13px;
+    }
+
+    .btn-reserve a {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    #details {
+        color: black;
+    }
+}
+
+@media screen and (min-width: 769px) {
+    #section-club {
+        top: -30vh;
+    }
+}

@@ -1,0 +1,266 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+hr {
+    width: 30vh;
+    background-color: #08783c;
+    height: 0.7vh;
+    border: none;
+}
+
+main {
+    width: 90vw;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    text-decoration: none;
+}
+
+#div-title {
+    margin-top: 3vh;
+    height: 12vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#div-title h2 {
+    font-weight: 300;
+    font-size: 25px;
+    color: black
+}
+
+#div-title p {
+    font-weight: 100;
+    font-size: 20px;
+    color: black;
+}
+
+#cards {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 50px 0;
+}
+
+.standard-card {
+    margin-top: 5vh;
+    width: 25vw;
+    height: auto;
+    border-radius: 20px;
+    background-color: #08783c;
+    box-shadow: rgba(50, 93, 58, 0.815) 0px 50px 100px -20px;
+    flex-basis: 1/3;
+    margin: 0 15px 30px;
+    border-radius: 28px;
+    display: block;
+    padding: 30px 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+
+.standard-card:hover .standard-card_bg {
+    transform: scale(10);
+}
+
+.standard-card:hover h3,
+.standard-card:hover p,
+.standard-card:hover span,
+.standard-card:hover button {
+    color: #08783c;
+    transition-duration: 0.5s;
+    border-color: #08783c
+}
+
+
+
+.standard-card_title h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #fff;
+    z-index: 2;
+    position: relative;
+}
+
+/* DESCRIPTION */
+.standard-card_description p {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 15px;
+    color: #f0f0f0;
+    z-index: 2;
+    position: relative;
+}
+
+/* PRIX */
+.standard-card_price span {
+    font-size: 1.1rem;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 20px;
+    color: #f9b234;
+    z-index: 2;
+    position: relative;
+}
+
+.standard-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.standard-card:hover {
+    transform: translateY(-10px);
+    box-shadow: rgba(50, 93, 58, 0.9) 0px 60px 120px -30px;
+}
+
+/* BOUTON CORRIGÉ */
+.standard-card_button {
+    font-size: 1rem;
+    padding: 10px 18px;
+    font-weight: 300;
+    border-radius: 8px;
+    background-color: #f9b234;
+    color: white;
+    border: 1px solid #f9b234;
+    cursor: pointer;
+    z-index: 2;
+    position: relative;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+.standard-card_bg {
+    height: 128px;
+    width: 128px;
+    background-color: #f9b234;
+    z-index: 1;
+    position: absolute;
+    top: -75px;
+    right: -75px;
+    border-radius: 50%;
+    transition: all 0.5s ease;
+}
+
+
+@media only screen and (max-width: 979px) {
+    .standard-card {
+        flex-basis: calc(50% - 30px);
+    }
+
+    .standard-card_title h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    #cards {
+        width: 96%;
+    }
+}
+
+@media only screen and (max-width: 639px) {
+    .standard-card {
+        flex-basis: 100%;
+        padding: 22px 40px;
+    }
+
+    .standard-card_title h3 {
+        font-size: 1.1rem;
+    }
+
+
+    .standard-card_price span {
+        font-size: 1rem;
+    }
+
+    .standard-card_button {
+        font-size: 0.95rem;
+        padding: 9px 16px;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    #div-title {
+        height: auto;
+        margin-top: 2vh;
+    }
+
+    #div-title h2 {
+        font-size: 22px;
+        text-align: center;
+    }
+
+    #div-title p {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    #cards {
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 0;
+    }
+
+    .standard-card {
+        width: 90%;
+        margin: 15px 0;
+        padding: 24px 20px;
+    }
+
+    .standard-card_title h3 {
+        font-size: 1.3rem;
+    }
+
+    .standard-card_description p {
+        font-size: 0.95rem;
+    }
+
+    .standard-card_price span {
+        font-size: 1rem;
+    }
+
+    .standard-card_button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    hr {
+        width: 90%;
+        margin: 10px auto;
+    }
+
+    #div-title h2,
+    #div-title p {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .standard-card {
+        padding: 20px 16px;
+    }
+
+    .standard-card_title h3 {
+        font-size: 1.1rem;
+    }
+
+    .standard-card_button {
+        font-size: 0.9rem;
+        padding: 9px 16px;
+    }
+}
+
+footer {
+    margin-top: 60px;
+    padding: 20px;
+    text-align: center;
+    background-color: #06542b;
+    color: white;
+    margin-top: 29vh;
+}

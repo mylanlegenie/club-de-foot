@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/assets/logo.webp">
+    <link rel="stylesheet" href="/css/billeterie.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <title>Billeteries</title>
+</head>
+
+<body>
+    <nav id="navbar">
+        <div id="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <a href="/"><img id="logo" src="/assets/logo.webp" alt="Logo du club"></a>
+
+        <div id="rubriques-desktop">
+            <a class="rubriques" href="/html/jskiste">JSKISTE</a>
+            <a class="rubriques" href="/html/billeterie">BILLETERIE</a>
+            <a class="rubriques" href="/html/notre-histoire">NOTRE HISTOIRE</a>
+        </div>
+
+        <div id="navbar-icons">
+            <a href="/html/panier.html"><img src="/assets/basket.webp" alt="Panier"></a>
+            <a href="/html/seconnecter.html"><img src="/assets/avatar.webp" alt="Avatar"></a>
+        </div>
+    </nav>
+
+
+    <div id="menu-mobile" class="hidden">
+        <a class="rubriques" href="/html/jskiste">JSKISTE</a>
+        <a class="rubriques" href="/html/billeterie">BILLETERIE</a>
+        <a class="rubriques" href="/html/notre-histoire">NOTRE HISTOIRE</a>
+    </div>
+    <main>
+
+        <section id="section-billeterie">
+            <h1 id="next-match">Prochain match</h1>
+            <div id="timer">
+                <div id="hours">
+                    <span class="number">3</span>
+                    <span>Heures</span>
+                </div>
+                <div id="minutes">
+                    <span class="number">30</span>
+                    <span>Minutes</span>
+                </div>
+                <div id="secondes">
+                    <span class="number">30</span>
+                    <span>Secondes</span>
+                </div>
+            </div>
+        </section>
+        <section id="section-club">
+            <div>
+                <div id="opposite-club">
+                    <img src="/assets/club-algerois.webp" alt="Logo club adverse">
+                    <span>Club Adverse</span>
+                </div>
+                <div id="details">
+                    <span id="ligue">Ligue 1</span>
+                    <span id="ville">Tizi-Ouzou</span>
+                </div>
+                <div id="our-club">
+                    <img src="/assets/logo.webp" alt="Logo du club">
+                    <span>JS TOUHAR</span>
+                </div>
+            </div>
+            <div>
+                <a href="book.html" id="buy">Acheter des billets</a>
+            </div>
+        </section>
+        <section class="match-list-section">
+            <h2 class="section-title">LES MATCHS À VENIR</h2>
+            <div id="match-list-container"></div>
+        </section>
+    </main>
+    <footer id="site-footer">
+        <p>&copy; 2025 JS TOUHAR — Réalisé par <strong>Mylan HACHEMANE</strong></p>
+    </footer>
+    <script>
+        const matchsAVenir = [
+            {
+                equipe1: "JS Touhar",
+                equipe2: "ES Sétif",
+                date: "08/06",
+                heure: "15:00",
+                prix: "500 DA"
+            },
+            {
+                equipe1: "ES Mostaganem",
+                equipe2: "JS Touhar",
+                date: "14/06",
+                heure: "15:00",
+                prix: "500 DA"
+            },
+            {
+                equipe1: "JS Touhar",
+                equipe2: "ASO Chlef",
+                date: "20/06",
+                heure: "15:00",
+                prix: "500 DA"
+            }
+        ];
+
+        const container = document.getElementById("match-list-container");
+
+        matchsAVenir.forEach(match => {
+            const card = document.createElement("div");
+            card.className = "match-card";
+
+            card.innerHTML = `
+      <div class="match-info">
+        <div class="teams">
+          <span>${match.equipe1}</span>
+          <span class="vs">VS</span>
+          <span>${match.equipe2}</span>
+        </div>
+        <div class="price">À partir de <strong>${match.prix}</strong></div>
+      </div>
+      <div class="match-date">
+        <span>${match.date}</span>
+        <span>${match.heure}</span>
+      </div>
+      <div class="btn-reserve">
+        <a href="book.html">Réserver</a>
+      </div>
+    `;
+
+            container.appendChild(card);
+        });
+
+        let remainingTime = 23 * 3600 + 2 * 60;
+
+        function updateTimer() {
+            const hours = Math.floor(remainingTime / 3600);
+            const minutes = Math.floor((remainingTime % 3600) / 60);
+            const seconds = remainingTime % 60;
+
+            document.querySelector("#hours .number").textContent = hours.toString().padStart(2, "0");
+            document.querySelector("#minutes .number").textContent = minutes.toString().padStart(2, "0");
+            document.querySelector("#secondes .number").textContent = seconds.toString().padStart(2, "0");
+
+            if (remainingTime > 0) {
+                remainingTime--;
+            }
+        }
+
+        updateTimer();
+        setInterval(updateTimer, 1000);
+        // burger
+        const burger = document.getElementById("burger-menu");
+        const mobileMenu = document.getElementById("menu-mobile");
+
+        burger.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="JS TOUHAR, club de football né en Kabylie et fondé par Touhar. Vivez l'émotion du foot entre passion, mathématiques et zizitoune. Matchs, billets et abonnements en ligne." />
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="icon" type="image/x-icon" href="/assets/logo.webp">
+    <link rel="stylesheet" href="/css/footer.css">
+    <title>JS TOUHAR</title>
+</head>
+
+<body>
+    <nav id="navbar">
+        <div id="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <a href="/"><img id="logo" src="/assets/logo.webp" alt="Logo du club"></a>
+
+        <div id="rubriques-desktop">
+            <a class="rubriques" href="/html/jskiste">JSKISTE</a>
+            <a class="rubriques" href="/html/billeterie">BILLETERIE</a>
+            <a class="rubriques" href="/html/notre-histoire">NOTRE HISTOIRE</a>
+        </div>
+
+        <div id="navbar-icons">
+            <a href="/html/panier.html"><img src="/assets/basket.webp" alt="Panier"></a>
+            <a href="/html/seconnecter.html"><img src="/assets/avatar.webp" alt="Avatar"></a>
+        </div>
+    </nav>
+
+
+    <div id="menu-mobile" class="hidden">
+        <a class="rubriques" href="/html/jskiste">JSKISTE</a>
+        <a class="rubriques" href="/html/billeterie">BILLETERIE</a>
+        <a class="rubriques" href="/html/notre-histoire">NOTRE HISTOIRE</a>
+    </div>
+
+
+    <main id="main-homepage">
+        <div id="catch-phrase">
+            <h1><span class="flash-text">VIVEZ L'EMOTION DU FOOTBALL</span> </h1>
+            <h1><span class="flash-text">AVEC LA JS TOUHAR</span></h1>
+        </div>
+
+        <div id="next-match">
+            <div class="match-info">
+                <div id="title-next-match">
+                    <h2>Prochain Match</h2>
+                </div>
+                <div id="team">
+                    <div id="opposing-club">
+                        <img src="/assets/club-algerois.webp" alt="Logo du club adverse">
+                        <span>Club Opposé</span>
+                    </div>
+                    <span style="color:#e0b000; font-weight:bold;font-size:20px ">VS</span>
+                    <div id="our-club">
+                        <img src="/assets/logo.webp" alt="Logo du club">
+                        <span>JS TOUHAR</span>
+                    </div>
+                </div>
+            </div>
+            <div class="date-n-time">
+                <span>22/05</span>
+                <span>18:00</span>
+            </div>
+            <div class="tickets">
+                <a href="/html/panier.html" style="text-decoration: none;"><span>Acheter des billets</span></a>
+            </div>
+        </div>
+
+        <div id="resultats">
+            <h3>DERNIERS RÉSULTATS</h3>
+        </div>
+
+        <div id="match-a-venir"></div>
+
+        <script>
+            const matchs = [
+                { equipe1: { nom: "JSK", logo: "/assets/logo.webp" }, equipe2: { nom: "MCA", logo: "/assets/club-algerois.webp" }, score: "1 - 2", date: "17/05 16:00" },
+                { equipe1: { nom: "CRB", logo: "/assets/club-crb.webp" }, equipe2: { nom: "JS TOUHAR", logo: "/assets/logo.webp" }, score: "0 - 4", date: "13/05 16:00" },
+                { equipe1: { nom: "CSC", logo: "/assets/club-csc.webp" }, equipe2: { nom: "JS TOUHAR", logo: "/assets/logo.webp" }, score: "Reporté", date: "05/05 17:00" },
+                { equipe1: { nom: "JS TOUHAR", logo: "/assets/logo.webp" }, equipe2: { nom: "ESS", logo: "/assets/club-ess.webp" }, score: "3-1", date: "01/05 18:00" },
+                { equipe1: { nom: "USMK", logo: "/assets/club-usmk.webp" }, equipe2: { nom: "JS TOUHAR", logo: "/assets/logo.webp" }, score: "1-1", date: "29/04 15:00" },
+                { equipe1: { nom: "JS TOUHAR", logo: "/assets/logo.webp" }, equipe2: { nom: "CRB", logo: "/assets/club-CRB.webp" }, score: "3-0", date: "25/04 19:00" },
+                { equipe1: { nom: "ESS", logo: "/assets/club-ess.webp" }, equipe2: { nom: "JS TOUHAR", logo: "/assets/logo.webp" }, score: "0-3", date: "20/04 15:00" }
+            ];
+
+            const container = document.getElementById("match-a-venir");
+
+            matchs.forEach(match => {
+                const isReport = match.score.toLowerCase() === "reporté";
+                const html = `
+                    <div class="match-card">
+                        <div class="teams">
+                            <div class="team">
+                                <img src="${match.equipe1.logo}" alt="${match.equipe1.nom}" />
+                                <span>${match.equipe1.nom}</span>
+                            </div>
+                            <div class="team">
+                                <img src="${match.equipe2.logo}" alt="${match.equipe2.nom}" />
+                                <span>${match.equipe2.nom}</span>
+                            </div>
+                        </div>
+                        <div class="score ${isReport ? 'report' : ''}">
+                            ${match.score}
+                        </div>
+                        <div class="date-box">${match.date}</div>
+                    </div>
+                `;
+                container.innerHTML += html;
+            });
+            // burger
+            const burger = document.getElementById("burger-menu");
+            const mobileMenu = document.getElementById("menu-mobile");
+
+            burger.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+            });
+
+
+        </script>
+    </main>
+
+    <footer id="site-footer">
+        <p>&copy; 2025 JS TOUHAR — Réalisé par <strong>Mylan HACHEMANE</strong></p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+#tabs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+#tabs button {
+    padding: 12px 24px;
+    font-weight: bold;
+    border: 2px solid #007f00;
+    background: white;
+    color: #007f00;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#tabs .active-tab {
+    background: #007f00;
+    color: white;
+}
+
+.form-block {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    border: 3px solid #007f00;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    display: none;
+}
+
+.form-block.visible {
+    display: block;
+}
+
+.form-block h2 {
+    color: #007f00;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    color: #007f00;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+.form-button {
+    background: linear-gradient(to right, #007f00, #00aa00);
+    color: #ffd700;
+    font-size: 1.2rem;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+}
+
+.form-button:hover {
+    background: linear-gradient(to right, #009900, #00cc00);
+    transform: scale(1.03);
+}
+
+
+@media screen and (max-width: 950px) {
+    main {
+        padding: 40px 10px;
+    }
+
+    #tabs {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #tabs button {
+        width: 100%;
+        max-width: 300px;
+        margin: auto;
+    }
+
+    .form-block {
+        padding: 20px;
+        width: 100%;
+        box-sizing: border-box;
+        border-width: 2px;
+    }
+
+    .form-button {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    .form-group input {
+        font-size: 0.95rem;
+    }
+
+    footer {
+        font-size: 14px;
+        padding: 20px;
+        text-align: center;
+        background-color: #06542b;
+        color: white;
+    }
+}

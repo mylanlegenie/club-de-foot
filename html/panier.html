@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Votre panier</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/panier.css">
+    <link rel="stylesheet" href="/css/footer.css">
+</head>
+
+<body>
+    <nav id="navbar">
+        <div id="burger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <a href="/"><img id="logo" src="/assets/logo.webp" alt="Logo du club"></a>
+
+        <div id="rubriques-desktop">
+            <a class="rubriques" href="/html/jskiste">JSKISTE</a>
+            <a class="rubriques" href="/html/billeterie">BILLETERIE</a>
+            <a class="rubriques" href="/html/notre-histoire">NOTRE HISTOIRE</a>
+        </div>
+
+        <div id="navbar-icons">
+            <a href="/html/panier.html"><img src="/assets/basket.webp" alt="Panier"></a>
+            <a href="/html/seconnecter.html"><img src="/assets/avatar.webp" alt="Avatar"></a>
+        </div>
+    </nav>
+
+
+    <div id="menu-mobile" class="hidden">
+        <a class="rubriques" href="/html/jskiste">JSKISTE</a>
+        <a class="rubriques" href="/html/billeterie">BILLETERIE</a>
+        <a class="rubriques" href="/html/notre-histoire">NOTRE HISTOIRE</a>
+    </div>
+
+    <main>
+        <h1>Votre panier</h1>
+        <div id="panier-container" class="panier-bloc"></div>
+
+        <div id="panier-options">
+            <button id="vider-panier">🗑 Vider le panier</button>
+            <button id="valider-commande">✅ Valider la commande</button>
+        </div>
+
+        <div id="panier-total"></div>
+    </main>
+    <footer id="site-footer">
+        <p>&copy; 2025 JS TOUHAR — Réalisé par <strong>Mylan HACHEMANE</strong></p>
+    </footer>
+
+    <script>
+        function loadCart() {
+            return JSON.parse(localStorage.getItem('panier') || '[]');
+        }
+
+        function saveCart(cart) {
+            localStorage.setItem('panier', JSON.stringify(cart));
+        }
+
+        function supprimerArticle(index) {
+            panier.splice(index, 1);
+            saveCart(panier);
+            location.reload();
+        }
+
+        function viderPanier() {
+            localStorage.removeItem('panier');
+            location.reload();
+        }
+
+        const panier = loadCart();
+        const container = document.getElementById("panier-container");
+        const totalDiv = document.getElementById("panier-total");
+        const viderBtn = document.getElementById("vider-panier");
+        const validerBtn = document.getElementById("valider-commande");
+
+        viderBtn.addEventListener("click", viderPanier);
+        validerBtn.addEventListener("click", () => {
+            window.location.href = "/html/confirmation.html";
+        });
+
+        if (panier.length === 0) {
+            container.innerHTML = "<p class='empty-message'>Votre panier est vide.</p>";
+            viderBtn.style.display = "none";
+            validerBtn.style.display = "none";
+        } else {
+            let total = 0;
+
+            panier.forEach((item, index) => {
+                const div = document.createElement("div");
+                div.className = "panier-item";
+
+                let sousTotal = 0;
+                const prixNum = parseInt(item.prix.replace(/\D/g, ""));
+
+                if (item.type === "abonnement") {
+                    sousTotal = prixNum;
+
+                    div.innerHTML = `
+                        <img src="${item.image}" alt="Abonnement">
+                        <div>
+                            <strong>${item.titre}</strong><br>
+                            ${item.description}<br>
+                            Prix : ${item.prix}<br>
+                            Sous-total : ${sousTotal} DA
+                        </div>
+                        <button class="btn-supprimer" data-index="${index}">Supprimer</button>
+                    `;
+                } else {
+                    sousTotal = prixNum * item.quantity;
+
+                    div.innerHTML = `
+                        <img src="${item.image}" alt="Stade">
+                        <div>
+                            <strong>${item.section}</strong><br>
+                            ${item.rang} – ${item.billets}<br>
+                            Prix : ${item.prix}<br>
+                            Quantité : ${item.quantity}<br>
+                            Sous-total : ${sousTotal} DA
+                        </div>
+                        <button class="btn-supprimer" data-index="${index}">Supprimer</button>
+                    `;
+                }
+
+                total += sousTotal;
+                container.appendChild(div);
+            });
+
+            totalDiv.innerHTML = `<p class="total">Total : <strong>${total} DA</strong></p>`;
+
+            document.querySelectorAll(".btn-supprimer").forEach(btn =>
+                btn.addEventListener("click", () => supprimerArticle(btn.dataset.index))
+            );
+        }
+        // burger
+        const burger = document.getElementById("burger-menu");
+        const mobileMenu = document.getElementById("menu-mobile");
+
+        burger.addEventListener("click", () => {
+            mobileMenu.classList.toggle("hidden");
+        });
+    </script>
+</body>
+
+</html>
